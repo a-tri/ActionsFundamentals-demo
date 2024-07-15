@@ -1,0 +1,26 @@
+name: Example of Sequential jobs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: greet sportsbet
+        run: echo "Hello Sportsbet"
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: hunger check
+        run: echo "Are you hungry?"
+
+  job-3:
+    if: ${{ always() }}
+    needs: [job1,job2]
+    runs-on: ubuntu-latest
+    steps:
+      - name: serve lunch
+        run: echo "Food is served"
