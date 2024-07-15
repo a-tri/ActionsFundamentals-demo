@@ -22,22 +22,3 @@ jobs:
 
             [1]: https://github.com/peter-evans/create-or-update-comment
           reactions: '+1'
-
-  comment-with-api:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install GH CLI
-        uses: dev-hanz-ops/install-gh-cli-action@v0.2.0
-      - name: Create comment with API
-        run: |
-          gh auth refresh -h github.com -s admin:org
-          gh api -X POST \
-          https://api.github.com/repos/${ORGANISATION}/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments \
-          -f body='
-            comment from API call
-            '
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ORGANISATION: ${{ github.event.organisation.login }}
-          REPOSITORY: ${{ github.event.repository.name }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
