@@ -6,6 +6,8 @@ on:
 
 jobs:
   comment-with-action:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: dump github context
@@ -22,3 +24,5 @@ jobs:
 
             [1]: https://github.com/peter-evans/create-or-update-comment
           reactions: '+1'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
