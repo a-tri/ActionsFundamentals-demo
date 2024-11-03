@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        run: echo Hello, Sportsbet!
+        run: echo Hello, FNZ!
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
